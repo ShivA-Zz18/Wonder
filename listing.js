@@ -6,10 +6,15 @@ const listingSchema = new mongoose.Schema({
     description: { type: String, required: true }, 
     price: { type: Number, required: true },
     location: { type: String, required: true },
-    images: [{ type: String }],
+    image: { type: String ,
+        default:
+            "https://www.pexels.com/photo/reflection-of-mountain-on-lake-braies-1525041/ default link",
+        set:(v)=>v==""?"https://www.pexels.com/photo/reflection-of-mountain-on-lake-braies-1525041/ default link":v
+    },
     country: { type: String,}
 });
 
 const Listing = mongoose.model('Listing', listingSchema);
 
 module.exports = Listing;
+  
